@@ -1,0 +1,26 @@
+---
+- name: git the python code
+  hosts: all
+  tasks:
+          - name: create directory for key
+            become: true
+            file:
+                    path: /opt/home/ansible/.ssh
+                    state: directory
+          - name: copy key
+            copy:
+                    src: /opt/home/ansible/.ssh/id_ed25519
+                    dest: /opt/home/ansible/.ssh/id_ed25519
+          - name: change permissions on key file
+            file:
+                    path: /opt/home/ansible/.ssh/id_ed25519
+                    mode: '600'
+          - name: git it!
+            git:
+                    dest: /home/ansible/ansible_test
+                    repo: 'git@github.com:amillssma/ansible_test.git'
+                    version: main
+                    accept_hostkey: yes
+                    key_file: /opt/home/ansible/.ssh/id_ed25519 
+
+
