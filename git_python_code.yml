@@ -5,7 +5,7 @@
           - name: git it!
             ansible.builtin.git:
                     repo: 'git@github.com:amillssma/ansible_test.git'
-                    dest: /home/ansible
+                    dest: /home/ansible/ansible_test
                     accept_hostkey: yes
             vars:
                     ansible_ssh_common_args: '-o ForwardAgent=yes'
