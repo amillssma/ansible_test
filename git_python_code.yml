@@ -9,7 +9,7 @@
                     state: directory
           - name: copy key
             copy:
-                    src: /opt/home/ansible/.ssh/id_ed25519
+                    src: /opt/ansible/.ssh/id_ed25519
                     dest: /opt/home/ansible/.ssh/id_ed25519
           - name: change permissions on key file
             file:
