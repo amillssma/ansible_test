@@ -17,10 +17,10 @@
                     mode: '600'
           - name: git it!
             git:
-                    dest: /home/ansible/ansible_test
+                    dest: /home/ansible
                     repo: 'git@github.com:amillssma/ansible_test.git'
                     version: main
                     accept_hostkey: yes
-                    key_file: /opt/home/ansible/.ssh/id_ed25519 
+                    key_file: /opt/ansible/.ssh/id_ed25519 
 
 
