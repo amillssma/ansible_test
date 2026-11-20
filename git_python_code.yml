@@ -2,10 +2,21 @@
 - name: git the python code
   hosts: obscon1
   tasks:
-          - name: git it!
-            ansible.builtin.git:
-                    repo: 'git@github.com:amillssma/ansible_test.git'
-                    dest: /home/ansible/ansible_test
-                    accept_hostkey: yes
-            vars:
-                    ansible_ssh_common_args: '-o ForwardAgent=yes'
+    - name: Ensure .ssh directory exists on remote host
+      ansible.builtin.file:
+        path: ~/.ssh
+        state: directory
+        mode: '0700'
+
+    - name: Copy GitHub deploy key to remote host
+      ansible.builtin.copy:
+        content: "{{ git_key_test }}\n"
+        dest: ~/.ssh/github_deploy_key
+        mode: '0600'
+
+    - name: Clone repository on remote host
+      ansible.builtin.git:
+        repo: git@github.com:amillssma/ansible_test.git
+        dest: /home/ansible/ansible_test
+        key_file: ~/.ssh/github_deploy_key
+        accept_hostkey: yes
