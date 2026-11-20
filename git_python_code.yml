@@ -9,6 +9,8 @@
         mode: '0700'
 
     - name: Copy GitHub deploy key to remote host
+      become: yes
+      become_user: ansible
       ansible.builtin.copy:
         content: "{{ git_key_test | b64decode }}\n"
         dest: ~/.ssh/github_deploy_key
