@@ -21,6 +21,6 @@
       become_user: ansible
       ansible.builtin.git:
         repo: git@github.com:amillssma/ansible_test.git
-        dest: /home/ansible/ansible_test
+        dest: /opt/home/ansible/ansible_test
         key_file: ~/.ssh/github_deploy_key
         accept_hostkey: yes
