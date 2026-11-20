@@ -1,6 +1,6 @@
 ---
 - name: git the python code
-  hosts: all
+  hosts: obscon1
   tasks:
           - name: create directory for key
             become: true
